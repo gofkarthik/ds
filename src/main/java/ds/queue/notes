@@ -1,0 +1,61 @@
+Queue
+=====
+Program code
+
+Operations
+===========
+Enqueue
+Dequeue
+PeekOfQueue
+IsQueueFull
+IsQueueEmpty
+
+Code
+=====
+Have 2 variables
+
+Constructor/Initialization
+===========================
+--array of size n
+--beginOFQueue : variable => -1
+--topOfQueue : variable => -1
+
+Operations
+===========
+IsQueueFull
+ -- topOfQueue = arr.lenght-1
+
+IsQueueEmpty
+ -- beginOfQueue == -1 ||  beginOfQueue == arr.lenght
+
+Enqueue
+ If queue full --> cant be inserted
+ else if(queueEmpty)
+      begin = 0
+      top ++
+      arr[top]=value
+ else
+      top ++
+      arr[top]=value
+
+Dequeue
+ if queue empty cannot be dequeued
+ else
+    arr[begiing]
+    beging ++
+    if(begin > top) {
+        begin = top = -1
+    }
+
+PrintQueue
+    int i=beging i<top print a[i]
+
+PeekQueue
+ If not empty arr[begining]
+
+Circular Queue
+===============
+
+
+
+

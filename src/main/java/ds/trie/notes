@@ -1,0 +1,159 @@
+Trie
+===
+A special type of tree
+It is a search tree, which is typically used to store/search strings in space/time efficient way
+Any node can store non repetitive multiple charachters
+Every node stores link of next charachter of string
+every node keep track of end of string
+
+
+let say we have to store string air
+
+                  a
+                 /
+                i
+               /
+              r
+
+let say we have to store aio
+
+                              a
+                             /
+                            i
+                           /
+                          ro
+
+let say we have to store bar
+
+                          ab
+                         / \
+                        i   a
+                       /     \
+                      ro      r
+
+search air is there or not
+a -> i -> r
+
+Why learn trie
+
+Spelling checker
+Auto complete string //just return all next charachters in the node
+
+Insert in Trie
+===============
+Create a blank node and call it as a root node..Blank node is a map like shown below
+
+    Map
+Char  TrieNode
+      (reference to child node)
+
+     Endofword //use to track end of onode reached or not
+
+Four cases in trie
+
+case 1 : Trie is blank(air)
+
+                     Map                 Map               Map                  Map
+                  char  trienode      char  trienode     char   trienode    char   trienode
+                   a       --------->  i      --------->   r         ------>
+
+                    endofword(N)         endofword(N)      endofword(N)        endofword(Y)
+
+ case 2: New string prefix is comming with another string prefix (aio)
+
+                                Map                 Map               Map                    Map
+                          char  trienode      char  trienode     char   trienode         char   trienode
+                           a       --------->  i      --------->   r          ------>
+                                                                   o ------------
+                            endofword(N)         endofword(N)      endofword(N)  |          endofword(Y)
+                                                                                 |
+                                                                               new empty node
+
+  case 3 : New string prefix is already present as complete string (airk) (air is already present)
+                                            after r in its empty node put k and mark it with another empty node
+
+
+   case4 : String is already present it trie (air) nothing needs to be done
+
+Search in a trie
+================
+
+case 1 : String does not exist in trie
+       -- look for the first charachter in root and it is not exisit and return false
+
+case 2 : abc ..start from root and keep going on
+             ..go until it is makred as y
+
+case 3 : String is prefix of another string
+         ab -- ab is there but we will return false because its a prefix
+
+Delete a string from trie
+=========================
+
+case1 : some other words prefix is same as prefix of thsi word
+      : BCDE , BCKG
+       in both string BC is common
+       Leaf to root
+
+       Check BCDE is there in trie
+       Try deleting node from leaf and delete it
+       During delete try to see any node is dependent on this node
+       If not delete the node
+       Else just remove the charachter in map
+
+case 2: Word is a prefix of some other word(BCDE,BCDEF)
+        BCDE is a prefix in BCDEF
+        We cannot delete BCDE because F is impacted
+        So we meed to update the node
+        So in F update end of word is N
+        which indicate BCDE is not there anymore and returns false
+
+case3 : some other word is a prefix of this word(BCDE,BC)
+         BC is a prefix of BCDE
+         so in this case delete the entry in the map
+
+case 4 : No one is dependent on current word
+
+Programmatic logic
+======================
+Create a TriNode
+ --> Children -- Map<ch,TrieNode> , boolean endOfNode
+
+Insert // for all cases -- prototype
+Iterate over word length
+Point currentNode to root
+Get character at index
+check the currenode is having charachter at it child
+if it is null crate node and add it to children
+poitn currentnode to creatednode
+end of for loop point endOfNode to true
+
+
+Search
+Point currentNode to root
+iterate over string length
+get charachter
+check charachter is at child ,if null return false
+else point currentnode to fetched node
+
+After for loop
+if node is having boolean true then word found
+
+
+Delete
+word prefix is same as prefix of other word (BCDE , BCKG)
+check from leaf if a node can be deleted if it is not having any other dependence
+If not delete only the charachter from map
+
+Word itself a prefix of some other word(BCDE,BCDEF)
+In this case update end of word in F as false
+
+some other word is a prefix of this word (BCDE,BC)
+In this case delete E and remove D
+
+
+
+
+
+
+

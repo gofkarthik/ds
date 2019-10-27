@@ -1,0 +1,82 @@
+#crete graph node
+ Create class GraphNode
+   Create a variable vertex holder (string name)
+   Create a boolean for whether the node is vistied or not
+   Create a variable called index which locates where it is stored
+
+#Main class
+Create a list<Graphnode>
+Create random n(1 t0 10) vertex and add it to the list
+Create edges and add it in matrix [edges should be within the vertex range)
+
+
+# insert
+  #vertex
+  During insertion ,just call constructor graphnode with value and index
+  this index will tell where graphnode is located at
+  Create arraylist of Graphnode in main class and add (graphode(verter,index))
+  #edges
+  In case of adjacency matric randomly pass index
+  graph.addUndirectedEdge(1,2) => 		i--;
+                                  		j--;
+                                  		adjacencyMatrix[i][j] = 1;
+                                  		adjacencyMatrix[j][i] = 1;
+
+#BFS traversal (level order traversal)
+Iterate over the list
+Create a queue of type linked list //LinkedList<Graphnode> queue=new LinkedList()
+add node to queue
+while(queue not empty){
+  node = dequeue()
+  node.visited = true
+  getNeighbors(node)
+  iterate neighbors (if each node is not visited then add it to the queue/mark it a visited)
+}
+
+Getneighbors -- adjacenymatrix (in case of adjacencymatrix)
+crete neighbor list
+if the columns of matrix of that row(node index) having 1 then they are neighbors
+return neighbor list
+
+
+#For adjacency list
+#in graphnode have one more variable called List<neighbors>
+
+# insert
+  #vertex
+  During insertion ,just call constructor graphnode with value and index
+  this index will tell where graphnode is located at
+  Create arraylist of Graphnode in main class and add (graphode(verter,index))
+  #edges
+  pass the edges let say 1,2
+  get those vertexs from list
+  add the vertex of 2 in neighbor list of 1
+  add the vertex of 1 in neighbor list of 2
+
+  Iterate neighbors will be directly from the list itself
+
+DFS
+====
+Follow the same as above
+
+Iterative
+=========
+Do the same for vertex and edge creation
+In case of adjacecy list and matrix do the same
+
+Replace Queue with stack
+Note Stack is a class
+use pop and do exactly the same way as above
+
+Recursive
+=========
+For each node call method dfsVisit(node)
+
+Set node visited to true
+iterate over its neigbhors
+if not visited call  method recursively again
+
+
+
+
+

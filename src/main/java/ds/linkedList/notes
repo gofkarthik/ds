@@ -1,0 +1,84 @@
+## A reference node points to the object of original node
+   changing its value will change only the node it is pointing at that movment
+   just by iterating it wont affect any other node
+
+SingleLinkedList -- program pseudocode
+====================
+
+Initialization
+Create a node with value and next
+Create a node head and tail
+Create a variable size
+
+#in insertion and deletion makse sure size ++ and size -- is applied all through
+
+Insert
+Method with location and value
+if at location 0
+ if(head  == null)
+ head = newNode
+ else
+  newNode.next = head
+  head = newNode
+ if(tail == null) tail = head
+ size+1
+if at location >=size
+ tail.next = newNode
+ tail=newNode
+ size+1
+if in between
+ Iterate untion location -1 //get previous node to be inserted
+ prevnode.next = node
+ node.next=prevnode.next.next
+ size+1
+
+Traverse
+   Create a reference node pointing to head
+   Traverse until null found
+   on eachh traverse
+
+Deletion
+ if location 0
+ head = head.next
+ size --
+ if(size ==0 )tail = null
+
+ if location greater than or equal size
+ get the previous node
+ if prev == head , head = null ,size --
+ else
+  prevnode.next = null
+  tail = prevnode
+
+
+SingleCircularLinkedList
+========================
+ Insertion -- same as above
+           -- only thing is tail.next=head for scenario location 0 and location >= size
+
+ Traversal same..but check == head instead of null
+ location =0 => tail.setNext(head) //head is changed
+
+ location > size
+ Get prev node
+ if(prevnode == head) do the same
+ else prevnode.next = head
+ size --
+
+
+ Double LinkedList
+ ===================
+ Create node with next and prev
+ Create size
+
+ Insertion
+ location 0
+
+ location >size
+
+ location in between
+
+ Follow same procedure as above
+ Make sure prev is set properly at each iteration
+
+

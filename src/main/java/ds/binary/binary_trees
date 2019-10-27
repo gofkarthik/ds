@@ -1,0 +1,430 @@
+What & Why Tree
+================
+To represent data in hierarchical form
+
+Tree Terminologies
+===================
+Node : 2 components (Data & reference to its sub category)
+
+Root : Node with no parent
+Edge : Link from parent to child
+Leaf : Node with no children
+Sibling : Children of same parent
+Ancestor : means Parent,grand-Parent,greate grand parent and so for a given node
+Depth of node : Length of path from root to that node
+ v1-- v2 -- v4  : depth of v4 is 2
+Height of node : Length of path from that node to deepest node
+
+Height / depth are both same. only difference is depth is always from root and height is from given node to deepest node
+also depth is measured from top and height is measured from bottom as it is measured from deepest node
+
+Height of tree : Length of path from root to its deepest node
+Depth of tree : Depth of root node (zero)
+
+Predecessor: Immediate previous node in inorder traversal of binary tree
+Find and print the inorder traversal of the tree and immedaite node of it
+For ex : 10,20,30,40
+so predecessor of 40 is 30
+
+Successor: Immediate next node in inorder traversal of binary tree
+so successor of 20 is 30
+
+Binary Tree
+============ 
+A tree is called binary tree if each node has zero,one or 2 child
+A family of data structure(BST,heaptree,AVL,red-black,huffmancoding tree)
+
+Why binary tree ?
+Because it is a pre-requisite of more advanced tree(BST,AVL,Red black)
+
+Used in solving specific problems
+Huffman coding
+Heap(priority queue)
+Expression parsing
+
+Types of Binary Tree
+====================
+Strict Binary tree : Each node has 2 children or none
+Full Binary tree: Each non-leaf node has 2 children and all leaf nodes are at same level (all nodes will have 2 children)
+Complete Binary tree : All level are completely filled except the last level
+ 					   Last level has all keys as left as possible
+
+Tree representation in code
+============================
+Using linked list
+  Create a node with three components
+  data , left pointer and right pointer carries address of right/left node accordingly    
+Using Array
+   
+  Never use of index 0 .. there is no rule
+  Left child -- cell[2x]
+  right child -- cell [2x+1]
+  x -> cell number of parent
+                  20
+              100.      3
+           50    15    250   35      
+
+
+cell     0.  1.  2    3  4   5    6   7   8 
+value       20  100  3  50  15.  250  35. 222
+ 
+for 100 x =2
+
+We will use linkedlist as it is much efficient that array
+
+Operations
+===========
+
+Creation of tree
+Insertion of node
+Deletion of node
+Search of a value
+Traverse all node
+Delete the entire tree
+
+
+Creation of tree
+==================
+i) create a blank binary tree
+   
+create a java class -> TreeNode { int data,TreeNode left,TreeNode right}
+create an empty object of binary tree
+
+Time / space complexity o(1)
+
+Traversal of a tree
+======================
+Depth first search
+Preorder
+Inorder
+Postorder
+
+Breadth first search
+Levelorder
+
+							20
+				100						3
+			50		  15.         250.       35
+		222
+
+Remember its subtree so finish left subtree
+Preorder : root , left subtree and right subtree
+         
+         20 (100 (50(222)()) (15)) (3(250)(35) )
+		-- 20 100 50 222 15 3 250 35
+
+Algorithm
+     printTree(root){
+        if(root equals null) error message  
+        print(root.value)
+        printTree(root.left)
+        printTree(root.right)
+     }
+
+Recursion
+step1
+prints 20
+printTree(root.left) 100 /before calling this pushes the next element to stack
+pushes next step to stack printTree(root.right)3
+
+
+step2
+print 100
+printTree(50)
+pushes next step to stack printTree(root.right) 15
+
+
+step3
+print 50
+printTree(222)
+pushes next step to stack printTree(root.right) null
+
+step4
+print 222
+printTree(null)
+pushes next step to stack printTree(root.right) null
+
+so in stack now
+null
+null
+15
+3
+
+step 5
+root null --return
+
+step6 (pop null)
+
+step7 (pop 15)
+print 15
+
+
+
+
+inorder : left subtree,root,right subtree
+
+        ( )    20     ()
+     (()100())
+     (( (222) 50   )100 (() 15 ()))
+		
+222 50 100 15 20 250 3 35
+
+
+Algorithm
+printValue(root){
+	if(root equals null) return
+	pirntValue(left)
+	print(root)
+	printValue((roight))
+}
+
+post order: left subtree,right subtree, root 
+      (((222)50)(15) 100) (250 35 3) 20 
+         222 50 15 100 250 35 3 20
+Algorithm
+printValue(root){
+	if(root equals null) return
+	pirntValue(left)
+	printValue((roight))
+	print(root)
+}
+
+
+
+
+Level order traversal
+=====================
+Algorithm
+
+Create a queue
+enqueu root
+while queu not empty
+ enqueu child of first element
+ dequeu print
+
+traversal time/space complexity O(n)
+
+
+Search operation in a binary tree
+================================
+algorithm
+ if root is null 
+ return error message
+ else
+  do level order traversal
+  if value found return succes else not success
+
+search O(n)
+
+Insert a node in binary tree
+============================
+
+2 cases:
+i)When root is blank create a root node
+ii)Insert at first vacant child
+
+Vacant child -> Do a level order traversal and whichever node comes first insert in its child
+
+Algorithm
+=========
+ insertNodeinBinaryTree()
+  if root is blank insert new node at root
+  else
+   do level order traversal and find first blank space
+   insert in that blank space
+
+time / space complexity O(n)
+
+
+Deletion of node in binary tree
+================================
+
+2 scenarios
+Value does not exist in the binary tree -- just return an error message
+Value exist in the binary tree
+
+Steps:
+
+Find the deepest node in the tree
+   (the last node in the level order traversal)
+Replace the value in the node to be deleted with this value
+Delete that deepest node
+
+Dont delete the node directly because it has child
+Hence find the deepest node and delete that because it has no child
+
+Algorithm
+=========
+ deleteNodeformBinaryTree()
+  search for node to be deleted
+  find deepest node in the tree
+  copy deepest node data in current node
+  delete deepest node
+
+time/space complexity O(n) 
+
+
+Delete entire tree
+==================
+Make root = null
+time/space complexity O(1)
+so in binary tree -- everything is o(n) except entire tree deletion
+
+Array implementation
+====================
+Index 0 is avoided
+Left child -- cell 2[x]
+Right child -- cell 2[x+1]
+where x is the cell number
+
+Create a blank binary tree
+=========================
+ create blank array of size n
+ update lastUsedIndex((variable)) to 0
+  --This variable keeps track on which variable was used last
+time O(1) space O(n)
+
+Insert a new node array implementation
+
+If array is full -- return error message
+Insert at first vacant cell in array
+
+Algorithm:
+Find the first empty cell in array
+And insert the value there
+
+Let say array index 9 is vacant ,then we insert value therer
+This gets linked to (2.x+1) = 4
+It becomes child of 9
+
+Technically if index is odd it will be right child
+if index is even it will be left child
+
+insertValue()
+if tree is full return error message
+else
+     insert value in first unused cell of array
+     update lastUsedindex
+
+The last used index making it O(1) as we can directly jump
+
+Time complexity O(1)
+Space complexity O(1)
+
+Search using array
+===================
+2 cases
+Value not exist in the tree
+value to be searched exist in the tree
+
+iterate over array and find the matching value
+else does not exist
+
+Algorithm
+ traverse from index 1 to lastUsedindexx
+   --if value found return success else failure
+
+Time complexity O(n) Space complexity O(1)
+
+Traversal
+===========
+
+Inorder traversal left ,root ,child
+Algorithm
+
+traversal(index)
+  if index > lastUsedIndex return
+  else
+   traversal(index*2)
+   print index.value
+   traversal (index*2+1)
+
+do same for postorder preorder   
+
+level order traversal
+====================
+    loop 1 to lastUsedIndex
+       print currentindex.value
+
+
+Delete node
+============
+
+deleteNode
+ searchForValueToBeDeleted in array
+ if value found
+     replace this cells value with last cell and update lastUsedIndex
+ return error messge
+ 
+Delete entire tree
+====================
+set array as null
+     
+
+
+Coding Notes
+=============
+In Binary tree linked list for insert and delete we check for codition = null
+henceforth dont put not equals null in level order traversal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

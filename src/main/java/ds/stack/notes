@@ -1,0 +1,26 @@
+Stack operation
+
+Initialize array of size n
+Have a variable called topOfStack with value -1
+
+
+isStackFull
+topOfStack == array.length-1
+
+isStackEmpty
+topOfStack == -1
+
+push
+if(!stackFull)
+topOfStack++
+arr[topOfStack]=value
+
+
+pop
+if(!stackEmpty)
+arr[topOfStack]
+topOfStack --
+
+peek
+arr[topOfStack]
+

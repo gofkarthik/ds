@@ -1,0 +1,233 @@
+Hashing
+=======
+A method of sorting and indexing data
+Idea behing hashing is to allow large amounts of data to be
+ indexed using keys commonly created by formulas
+
+Example
+======
+Consider given 3 strings
+Convert string to number
+Store those into array cells (-1)
+
+For ex ..string converted to 32,71,45
+they will be stored in 31,70,44
+
+
+Why Hashing
+============
+Search can be done in O(1)
+May be O(n)
+
+Terminologies
+===========
+
+Hash function :
+A function used to generate hash code
+
+Key : Input data given by user (input string)
+
+hash value : can be also called hash value
+
+hash table : an array that can map key to values
+
+collision: when different key to a hash function produce
+            same output hash value
+
+
+Hash functions
+================
+Simple mod function (for integer inputs)
+mod(x% 16)
+for x=500 it returns 4
+for 700 it gives reminder 12
+Reducing value so that we can associate to a cell number in array
+
+
+hash function (takes string and int)
+x = "abc"
+ascii(string x,16) {
+char ch[] = x.toCharArray();
+int i,sum;
+for(i=0;i<x.lenght();i++){
+sum += ch[i] ; //tis gives asci value
+}
+return sum % 16
+}
+
+Characteristics of good hash function
+======================================
+A good hash function should give unqiue hashcode as much as it can to avoid collision
+Because resolving collision is an extra overhead
+
+Tha hash function should use all input data
+Means in a given string it should always take all characters of input data
+because in some case first 6 charachters might be same
+
+
+Resolving collision
+====================
+
+Let say hash function returns value 2 for three strings
+
+first time cell is empty and we store string 1 in cell 2
+second time value is occupied and it ends in collision
+
+Techniques to resolve collision
+
+                 Collision Technique
+
+          Direct Chaining            Open Addressing
+
+Direct chaining technique
+=========================
+In every cell we will store references of linked list
+Create a likedlist and store
+
+For instane here let say string is abcd and results in hashcode 2
+so create a blank node(address is 111) and put value in that node
+First string
+            0
+            1
+            2 (111)  --  ABCD|null
+
+Second string CD comes with same value so int that case
+
+                0
+                1
+                2 (111)  --  ABCD|222 -->   CD|null
+                                              222
+
+So keep chaining like it
+
+
+OPen addressing techinque
+    this can be split intp
+      Linear probing     Quadratic probing  Double hashing
+
+Linear Probing  (No linked list)
+===============
+first string put value in cell 2
+second string comes with same value and see the cell next to 2 is empty
+if it is empty put the value
+so keep going to next cell until it is empty
+
+Quadratic probing
+================
+1 square, 2 square, 3 square  4 square
+
+first string put in cell 2
+second string put in cell 2 + 1 sqaure = 3
+
+third string cell 2 + 2 square and put it here
+
+
+Double hashing
+============
+2 hash functions 1 is primary and another is secondary
+
+first string put in cell 2
+second string called secondary hash functions let say it gives 4
+then add 2+4 =6
+
+third string called secondary hash function ..let say it is giving
+4 again.. 2+4=6
+but 6 is occupied so apply
+2+(2x4) = 10
+2+(3x4) = 14
+2+(..
+so forumale always is
+primaryhashfunction value()
+
+if it is full then
+primaryhashfunction + (1 * secondaryhashfunction)
+primaryhashfunction + (2 * secondaryhashfunction)
+primaryhashfunction + (3 * secondaryhashfunction)
+primaryhashfunction + (4 * secondaryhashfunction)
+...go on at some point it if crosses array size then
+do mod on the final value / array size
+
+
+What happens when hashtable is full
+====================================
+Direct chaining
+  --this will never arise
+
+Open addressing
+ --this problem will arise..
+ --create a hashtable double of its size compared to existing hashtable
+ --first hashtable 5 cells
+ --when its full create another hashtable dobule of its first
+ --goes on
+
+
+Comparison of collision resolution techniques
+=========================
+Direct chaining
+ -- no fear of exhausting table buckets
+ ---big linked list affets performance time
+ ---it will take O(n) time then
+
+Open Addressing
+  Easy implementation
+  hashtable might become full
+  if you crete new table ,it will have O(n) time issue
+  has we need to traverse all cells
+
+Solution :
+If input size is know then use "open addressing"
+so that we can array of exactly input size
+if input size doesnt know then we can use any of the one
+
+if deletion is very high then use direct chaining
+
+if use open addressing ,then below happens
+let say lineary probing
+
+    0 abc
+    1 def
+    2 xyz
+
+let say you detel def then 1 becomes empty and we call it as a hole
+now what is the impact of this? let say we are putting new value
+technically in lineary probint it should come after xyz ,but becuase
+1 is empty it assumes xyz is not there and goes ahead with it
+
+This is going to impact time complexity
+
+so whenever there is hole do restructuring and
+
+Practical use of hashing
+=========================
+Used heavily on password verification of servers
+
+How it works
+  username : abc@bia.com
+  password : 123456
+
+we cant store password as it is, as if server hacked we are in trouble
+convert password into hash value and save hash value into server
+
+List of files in temp folder
+
+file location  - C:\temp\part1.ipt
+
+apply hash function (file location) = 2
+
+so in 2  -- store cylinder,track and sector of hardisk location
+
+
+Hashing vs other ds
+=====================
+On an average insertion/deletion/search takes O(1) time
+But if bad hash funcition then it will be O(n)
+
+
+            Average
+Insertion  O(1)     / O(n)
+Deletion   O(1)     / O(n)
+Searching  O(1)     / O(n)
+
+
+
+

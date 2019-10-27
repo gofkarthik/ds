@@ -1,0 +1,70 @@
+#LinkedList
+BST trees
+=========
+A binary tree with
+
+left subtree of a node less than or equal to its parent node
+right subtree of a node has a key greater than to its parent node
+
+Creating and searching in BST
+=============================
+
+Create - 
+Initialize root with null O(1)
+
+
+Search a binary search tree
+===========================
+If root node is null dont proceed futher
+If value equals root then simply return it
+Else Start with root node and either go towards left or right
+If value is less than or equal to root node go towards left else right
+
+Algorithm 
+=========
+
+BST_Search(root,value)
+ if(root is null) return null
+ if(root equals value) return value
+ if(value < root) BST_Search(root.left,value)
+ else if(value > root) BST_Search(root.right,value)
+
+Time / Space complexity O(logn)
+============================
+Do same as Binary tree
+
+Time complexity / space complexity O(n)
+
+
+Insert a. node
+===============
+Check if value is less than or greater than root node
+If value is less than root traverse left else traverse right
+Insert node either in left or right
+
+
+Algorithm
+
+ BST_insert(currentNode,valueToInsert)
+  if(currentNode is null)
+    create a node and insert value in it
+  else if(valueInsert < currentNode)
+   currentNode.left = BST_insert(currentNode.left,valueToinsert)
+  else
+   currentNode.right = BST_insert(currentNode.right,valueToinsert)
+return currentNode
+
+so basically it uses stack
+currentNode.left = BST_insert(currentNode.left,valueToinsert) //in this line
+it pushes cn value and line number in stack
+
+
+Deletion
+==========
+Case 1:Node to be deleted is leaf node
+
+
+
+
+
+

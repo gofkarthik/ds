@@ -1,0 +1,13 @@
+Flow
+ Driver -> notifies current location and availability
+ Passenger -> see all nearby drivers
+ Customer  -> request a ride, near by drivers are notified
+ on mutual acceptance of driver and customer of a ride, both can see location until trip finishes
+ On completion driver marks journey to be available for next ride
+
+ Capacity estimation
+  --100 million registerd users and 1 million drivers
+  -- 1 million active drivers and 500K daily users
+  -- 1 million daily rides
+  -- all active driver notify there location
+  -- Customer puts a request for ride,system should be able to contact drivers real time

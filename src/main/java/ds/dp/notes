@@ -1,0 +1,51 @@
+What is dymanic programming
+
+1+1+1+1+1+1 = ?
+
+1+1+1+1+1+1+2 = ?
+
+so here add all numbers in the first question which gives 6
+then place it in the second question
+
+6+2 = 8
+
+So DP is break down into a collection of similar problems
+and store there solution
+
+It is exactly like divide and conquer and the only difference
+is that in both cases we break problems into smaller problem
+but in case of DP we will store subproblems result
+so if they come again and again we will reuse the solution
+
+Optimal substructure
+--Divide and conquer fb(n) = fb(n-1) + fb(n-2)
+
+Overlapping subproblem (DP)
+ -- Do divide and conquer and reuse the same for solving same subproblem
+
+Optimal substructure + Overlapping problem = Dynamic programming
+
+Fibonacci series
+ 0 1 1 2 3 5 8 ..
+
+ fibRes(n){
+    if (n is less than 1)return error
+    else if(n==1) return 0
+    else if(n==2) return 1
+    else fibRes(n-1) + fibRes(n-2)
+ }
+
+
+  in above we can reuse
+
+Top down approach (Momoization)
+ Problem is broken into smaller subproblems
+ Then these subproblems are solved. And the solution to these subproblems are remembered
+
+Bottom up approach (Tabulation)
+Start from small and go toward big
+
+top vs bottom
+rumtime for top is slow and for bottom is fast
+space use of extra space (in top) and no stack used in bottom
+when to use --top for need a quik solution and need a effective solution

@@ -1,0 +1,123 @@
+Binary search tree not balanced
+
+10 20 30 40 50 60 70
+
+ 10 -20 -30-40-50-60-70
+
+To find 60 we need to traverse from 10 until we reach 60
+We need to visit many nodes to visit all elements in the tree
+Height of the tree is more
+the above results in performance issue because it can be skewed
+So instead of O(logn) it can go to O(n)
+
+
+So we need to have balanced tree to make sure height of tree is smaller
+
+AVL -- Balanced binary search tree
+	   Takes the same properties of binary search tree	
+	   Inserting or deleting element in binary searchh tree
+	   it makes sure tree is always balanced
+	   reduces the performance from o(n) to log(n)
+	   
+AVL tree works on the concept called rotation
+
+Balance Binary search tree
+Height of immediate subtree of any node differs by atmost one(can be 0 too)
+
+Example
+             100
+          80  		    200
+        70  90        150   	300
+       50              		250 	400   
+    40	  60
+    
+    Root 100 -- height of left subtree(80) is 3
+    			height of right subtree(200) is 2
+    			3-2 =1 
+
+    200  -- height of 150 0 ,heigh of 300 1 
+    				difference = 1
+
+    80 -> hegiht of 70 is 2 hheight of 90 0
+          2-0 =2 
+        -> now 80 is not avl tree
+        
+   So we need to do rotation
+   if at any time height differes by more thab one rebalancing
+   is done to restore this property (called rotation)
+
+   Not lets take 70 ,right has no node so will consider height of
+   right is -1 .. so heigh of node which is null is -1
+
+Operations
+============
+Create AVL tree
+Search a node
+Traverse all nodes
+ -- above is same as binary search tree
+Insert a node
+Delete a node
+Delete the entire AVL tree
+
+
+Insert a node
+===============
+2 cases
+case 1 : when rotation is not required 
+
+case 2 : when rotation is required
+
+Rotation conditions
+
+Left Left Condition (LL)
+In the left node see which subtree causing imbalalce
+Go to grandchild (if is  going left,left then do right rotation)
+              40
+            30
+           20         --->         40 
+          10                    20      50
+                             10     30
+
+ Algorithm
+ =========
+
+ rightRotate(currentDisbalanceNode)
+   newRoot = currentDisblanceNode.left
+   currentDisblanceNode.left = currentDisblanceNode.left.Right
+   newRoot.right = currentDisbalanceNode
+   currentDisbalanceNode.Height = calclualteHeight(currentDisbalanceNode)
+   newRoot.Height = calclualteNewRoot
+
+
+LeftRightCondition
+=================
+Left right node from current node is causing disbalance
+
+  
+ rightRotate(currentDisbalanceNode)
+   newRoot = currentDisblanceNode.right
+   currentDisblanceNode.rgiht = currentDisblanceNode.right.left
+   newRoot.left = currentDisbalanceNodeLeftChild
+   currentDisbalanceNode.Height = calclualteHeightcurrentDisbalanceNodeLeftchild)
+   newRoot.Height = calclualte(NewRoot)
+
+
+
+           
+
+
+
+Left Right Condition( LR)
+
+
+
+
+
+
+
+
+
+
+
+
+

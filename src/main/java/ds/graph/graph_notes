@@ -1,0 +1,238 @@
+What / Why Graph
+===============
+ Pair of sets (V,E)
+ V -> set of vertices
+ E -> set of edges ,connecting the pair of vertices
+
+  cirlce - vertex
+  edge - connect verted
+
+  Graph is a pair of set -- means
+  v= {v1,...,v10}
+  e = {e1,e2...,e10}
+
+Why Graph
+==========
+Let say shortest path ,path between 2 cities
+
+Array and linked list can be used to store all cities because we still need to come up with algorithm
+Tree can be used but we cannot have a cycle in tree ,so it cannot be used
+
+
+Terminologies of Graph
+=======================
+
+Vertex --> nodes of a graph (circular things in graph)
+Edges --> arc that connects pair of vertices
+UnWeighted Graph
+       --> there is no weight between v1 an v2
+Weighted Graph
+        --> there is a weight between v1 and v2
+undirected graph
+         --> if there is no direction between v1 and v2
+         --> we can traverse in both directcions v1 to v2 and v2 to v1
+directed graph
+        -->there will be a direction from v1 to v2
+        -->then we cant traverse from v2 to v1
+        -->this is 1 way traffic
+cyclic graph --> A graph having atleast one loop
+           v1 -- v2 -- v3 --v5 -- v1
+Acyclic graph --> A graph does not have loop and it applies to every
+                  node in the graph
+
+Tree graph
+       A special directed acylic graph
+       we start from one node and tehre is no way to come back to that node
+
+Types of Graph
+2 main categories
+        Directed            Undirected
+   Weigheted  unweigted    Weigheted unweigted
+ posiitive -               +    -
+
+unweighted undirected graph
+unweighted directed graph
+Positive weighted undirected graph
+Negative weighted undirected graph
+Positive weighted directed graph
+Negative weighted directed graph
+
+
+Graph representation
+
+Adjacency Matrix is a square matrix used to represent a graph
+A 2d array
+create a matrix
+put correspondng values as 1
+for instance A -- B
+             C -- D
+
+              A B
+            A    1
+            B 1
+
+Adjacency List
+create a 1d array of linkedlist
+size of array will be number of vertices
+
+0 -- 1 --2
+    node  node  node
+0 -- 1-----2-----3
+
+
+IF a graph is complete or near to complete graph then we should choose adjaceny matrix
+Most of cell in 2d array will be 0 if graph is not complete
+then we typically should use adjacency list (here all edjes are stored in list)
+we can increase/decrase size of list
+If number of edges are less then we should use adjacency list
+
+Graph can be traversed in 2 ways  (BFS or DFS)
+================================
+Process of visiting each of the vertex in a given graph
+
+BFS (Breadth first search)
+Starts with arbitrary node of a graph and explores neighbor nodes
+Level order traversal visit
+It goes level by level
+Compared to level order traversal of a tree
+
+--coding to be done
+Use queue
+
+ while all vertices not explored
+ enqueu(any vertex)
+ while (q not empty)
+  p = dequeu()
+  mark p as visited
+  enqueu (all adjacent vertices)
+
+corner case -
+ disconnected graph
+ graph having no edges are called disconnected graph
+ BFS not possible in disconnected graph
+
+ time complexity O(V+E)
+ space complexity O(V+E)
+
+DFS (Depth first search)
+Starts with arbitrary node and explores as far as possible along each edge before backtracking
+
+ v2  v3
+ |   |
+ v5  v6      v10
+ |   |
+v8 - v9
+
+DFS
+v2 v5 v8 v9 v6 v3 v10
+
+BFS
+v2 v3 v5 v6 v10 v8 v9
+
+DFS algo
+=====
+use stack
+while all vertices not explored
+push(any vertex)
+while (stack not empty)
+ p=p0p
+ p is univisted mark p as visited
+ push(all univsited adjacent vertices of p)
+
+cannot be applied on disconnected graph
+
+Time complexity O(E+V)
+Space complexity O(E+V)
+
+
+        BFS           DFS
+      breadth first depth first
+      queue         stack
+      O(E+V)        O(E+V)
+      queue         stack
+
+If we want to find vertex and vertex is deep then use dfs
+if target is close to starting point then use BFS
+
+               v1
+            v2      v3
+        v4     v5  v6  v9
+
+if target is v4 then DFS
+if target is v3 then BFS
+
+Topological sorting
+===================
+Gives actions in such a way that if there is a dependency of one action on another,then the dependent action
+always comes later that ints parent action
+
+For ex
+
+        A
+        |
+        B
+        |
+        C
+
+so here c can be performed only after B and B can be performed only after A
+
+So in topological sort we need to find out which action can be performed in which order
+Which ever solution you apply in topologial sort, most important things is dependency action should never be violated
+
+Use stack
+if some other vertex is dependent on current vertex then go to that vertex first and then come back to this vertex
+else push currentVertex in stack and mark it as visited
+
+  A
+  |
+  B
+  |
+  C
+
+we start with A ,but A depends on B then on C ,no body depends on C henceforth push it to stack
+
+time complexity O(E+v)
+space complexity O(E)
+
+
+
+Single source shortest path algorithm
+=====================================
+--solved using BFS,Dijkstra,Belman ford
+Find the distance between a given vertex to all other vertices in the graph such that, total distance between
+them is minimum
+
+we cant use DFS -- we will discuss why
+
+using BFS
+do the same level order traversal
+but keep an extra variable called parent to keep track of path
+at each vertex there will be a parent variable which will store its parent
+
+
+v1 (parent null) -- v2 parent(v1) --v3 parent(v2)
+
+Time complexity is O(e)
+we always gauranteed graph is a connected one
+so in this case order is only e complexity
+
+BFS algoritm does not work for Weighted graph it can be used only for unweighted
+bfs will still go in a breath way irrespective of how much weight is associated with it
+so in that case some weighted graph will have less weight,but it will still go breath way
+
+
+DFS also wont work because it will clearly wont follow shortest
+path and it will go on its own track,so DFS cannot be used anywhere
+
+
+So for a weighted graph we need to use DJkstra
+
+Dijkstra
+
+minheap
+ --topmost elements is extracted first
+ --topmost element is always the smallest
+
+ only at the root level of tree it should be smallest
+
+

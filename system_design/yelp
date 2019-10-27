@@ -1,0 +1,88 @@
+Yelp
+ Proximity servers identifynNear by places,events etc.
+
+Requtiements
+
+Functional Requirments
+ User should be able add/delete/update places
+ Given there location(longitude/latitude) user should be able to find all near by places
+ User should be able to add feedback/review about place
+ Feedback can have pictures,text and rating
+
+Non functional
+ Real time search experience with minimum latency
+ Lot of search request, and support a heavy support load
+
+Scale
+ 500 million places and 100 k queries per second
+ 20% growth in number of places and qps per year
+
+
+Database
+ --Think about a location
+ locationid 8bytes
+ name 256
+ latitide 8
+ longitude 8
+ description 512
+ category  1
+
+ total size of a record 793 bytes
+
+ Reviews
+ locationid 8 bytes
+  reviewid 4 bytes
+  reviewtext 512 bytes
+  rating 1byte
+
+ System apis
+
+ Searh
+ We can use tradition database,but it wont scale
+
+ Grids
+ Divide the whole map into multiple grids to group locations to smaller sets
+ Each grid will store all the places within specifif range of latitude and longitude
+ Based on the given locaiton and radius ->find all neighboring grids and query these grids to find
+    nearby plaes
+
+Grid size
+ --Grid size should be equal to distance we like to query
+ --This means we need to search within the grid which contains
+   the location and neighboring 8 grids
+
+    select * from places where latitude between between X-D and X+D
+    and longitude between longitude between X-D and X+D
+    and Gridid in (GridId,...Grid8)
+
+   search radius is 10miles
+   total area of earth is 200 million square miles
+   20 milion grids
+
+   index in memory hashtable => key(grid) value(list of places)
+   girdid is 4bytes and locationid 9 butes
+   4x20  + 8*500 = 4gb
+
+what happens if places is added more
+and also places are not equally distributed among grids
+
+dynamic size grids
+desnly populated ares like SF needs log of grids ompard to other places
+
+Binary tree--insert elements max to smallest ,it becomes linkedlist
+            --becones O(n)
+
+Quad tree
+  leaves store the data
+  internal nodes store information to get data
+  they store four quadrants ,means four ways to go at
+  each internal node to get leaf node
+
+  does not matter where you insert
+
+        -128,128 to 128,128
+
+  -128,0 0,129   00 to 128,128     0,-128  to 128,0   -128,-128 00
+      non        A(100,125)            B(25,-30)        none
+O(logn)
+

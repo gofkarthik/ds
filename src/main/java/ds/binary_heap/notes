@@ -1,0 +1,173 @@
+BinaryHeap is a binary tree with special properties
+
+In binaryheap any given node can have 0 ,1 or 2 children
+ Heap property
+    value of any given node must be less than or equl to value of its chidren (min heap)
+    value of any given node must be greater thhan value of its children (max heap)
+ Complete tree
+    All level are completely filled and possibly the last level has all keys left as possible
+
+
+ Why binary heap
+ We need to find min/max among set of numbers in log(n)
+ Also inserting additional numbers does not take more than O(logn)
+
+ We can find min/max problem in array by sorting the given numbers
+ but let say we need to insert a new number then we have to go through each
+ elemetn and insert in sorted order
+ so this will take O(n) time
+
+ Lets use linked list,but its the same problem that if we need to
+ insert anywhere we again have to follow the same issue
+
+ we can solve it using log(n) with binary heap even we insert many numbers
+
+ Practical use
+ ================
+ Prims algorithm
+ Heap sort
+ Priority Queue
+
+ In all above algorithms we use binary heap
+
+
+ Types of binary heap
+ =====================
+  Each and every node is less than or equal to it children -- min heap
+  Same greather than max heap
+
+ Operations
+ ============
+ Can be implemented using
+ Array
+ Reference/Pointer based implementation
+
+ Creation == do using blank array
+ =========
+ Create a blank array of size n+1
+ initialize sizeOfHeap with 0
+
+ //we wont use 0 the element
+
+ Peak of Heap
+ ============
+ Return root element of heap
+ Value is returned and not taken away from heap
+
+ if tree does not exist return error
+ else return 1st cell of array
+ O(1)
+
+ Size of heap
+ ============
+  return sizeOfHeap (not size of array)
+  return sizeOf cells used in the heap
+
+Insert element of heap
+======================
+
+if tree does not exist
+ return error message
+else
+ insert value in unused cell
+ sizeOfHeap ++
+ heapifyBottomToup
+
+O(logn)
+
+ExtractMin and delete from heap
+=====================
+Only element we need to extract from heap is always the root
+Other elements needs to be promoted to root
+The last element will be always promoted
+Then again heapify
+
+if tree does not exist
+return error message
+else
+extract 1st cell of array
+promote last element to first
+sizeOfHeap --
+heapifyTopToBottom()
+
+Deletion of entire heap
+===================
+delete -0set array to null
+
+
+CODE NOTES
+=========
+Note : 0 is never used for index
+sizeOfHeap : size of tree
+
+creation :
+ constructor with array of size n+1
+ sizeOfTree => 0
+
+isEmptyTree:
+ sizeOfTree <=0
+
+levelOrderTraversal
+ Print the array
+ interat until the sizeOfTree
+
+insertion
+ //becuase index 0 is never used
+ arr[sizeOftree+1]= value
+ sizeOftree++
+ heapifyBottomToTop(sizeOfTree)
+
+ heapifyBottomToTop(int index) --> recursive function
+    int parent = index/2
+    if(index <=1)
+        return  //breaking condition
+
+    if(arr[parent] > arr[index]){
+        int temp= arr[parent];
+        arr[parent]=arr[index];
+        arr[index]=temp;
+    }
+
+     heapifyBottomToTop(parent) //do from parent again
+
+
+extractHeadOfHeap
+   int value = arr[1]
+   arr[1]=arr[sizeOfTree]
+   sizeOfTree--
+   heapifyTopToBottom(1)
+
+deletion: (three conditions)
+Node has no child
+Node has only one left child
+Node has 2 child
+
+heapifyTopToBottom(int index)
+ int left=sizeOfTree*2 //left child index
+ int right=sizeOfTree*2 + 1 //right child index
+ int smallestChild = 0
+ sizeOfTree < left return  //no child
+
+ else
+
+ sizeOfTree == left // only one child
+ //check parent greater than index then return
+ if(arr[idex]>arr[left]){} //do swap
+ return
+
+ else
+ //find smallest child
+ if(arr[left] < arr[right]) smallestChild = arr[left]
+ else arr[smallestChild] = arr[right]
+ then swap
+ if(arr[idex]>arr[smallestChild]){}
+ heapifyTopToBottom(smallestChild)
+
+
+
+
+
+
+
+
+

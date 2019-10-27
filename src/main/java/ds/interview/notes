@@ -1,0 +1,229 @@
+Priori Analysis //language independent
+Algorithm
+
+Posterior testing //language specific
+Program
+
+Algorithm has to take input
+ Input - 0 or more
+ Output - atleast 1 output
+ Definiteness -
+ Finiteness - Must terminate at some point
+ Effectiveness -
+
+Analyze Algorithm
+Time
+Space
+Network/Consumption (N/W)
+Power
+CPU registers
+
+
+Frequency Count Method
+======================
+Method used to find time
+Assigning 1 unit for each statement
+
+Algorithm sum(A,n)
+{
+    s=0;--------------- 1
+    /*
+    i = 0 (1)
+        i<n (n+1)
+        i++ n
+          ---bigger is n+1 //condition is exectuing one more time than 1
+          --- a=a+a[i] -- n times
+    */
+    for(i=0;i<;i++){  -- n+1
+      a=a+a[i] --n
+    }
+
+    return s; -- 1 time
+}
+
+f(n) =  2n + (1+1+1) = 2n+3 (O(n))
+
+
+Space  A,n,s,i
+
+A -- n
+n -- 1
+s -- 1
+i -- 1
+
+     s(n)=n+3
+
+
+     for(i..)  n+1
+      for(j)..  n (n+1)
+
+
+n+1 =n
+2n+1 = n
+n/2 = n --running a for loop by incrementing i by 2
+
+loop running until i < n will always be O(n)
+
+ let say n =5
+  for(int i=0;i<n;i=i+2)
+
+      i
+      0
+      2
+      4
+    (i=k+2)
+  --loop breaks
+    i >= n
+    k+2 >= n (k =n-2) l(n)
+
+    for(int i=1;i<n;i=i*2)
+     i
+     1
+     2
+     2x2
+     ..
+     2 pow k
+            2 pow k >= n
+                2 pow k =n
+                     k = log n
+                            2
+
+     So if you have a loop ,where counter variable is not incrementing instead multiplying then logn is possible
+
+   let say division
+     for(int i=n;i>=1;i=i/2)
+            i
+            --
+            n/2
+            n/2 pow 2
+
+            n/2 pow k = 1
+            n = 2pow k
+            k=logn
+
+  for(i=0)---m
+   for j=o j*2 logn
+   n logn
+
+   1<logn<rootn<n<nlogn<n<npow2<2pown
+
+   Asymptotic Notations
+
+   Upper bound big O
+   lower bound big Omega - -
+   theta average bound
+
+Disjoint Sets (Kruskals algorithm)
+============================
+Disjoint sets & operations
+Detecting a cycle
+Graphical Representation
+Array Representation
+Weighed Union & Collapsing find
+
+Non connected / Non directed graph
+
+1-2-3-4
+5-6-7-8
+
+s1 = {1,2,3,4}
+s2 = {5,6,7,8}
+
+If see above both have nothing in common
+s1 N s2 = 0
+so both sets have noting in common,so we can do only
+
+(
+find and
+union
+) -- disjoin sets
+
+Find -> finds which vertex belons to which set
+        for example 5 belongs to set 2
+
+Let say find (4,8) in this case both belong to different sets and so
+perfotm union of 2 sets ,this where we perform union
+
+s3={1,2,3,4,5,6,7,8}
+
+Now find 1,5 and we are able to see 1,5 both present in same set
+then it means its a cycle
+
+
+So disjoint sets helps to find cycle
+
+
+Divide & Conquer
+================
+Binary Search
+Finding Maximum and minimum
+Merge sort
+Quick Sort
+Strassen's Matrix Multiplication
+
+Recursion
+===============
+void Test(int n)
+{
+    if(n>0)
+    {
+        print(n)
+        Test(n-1)
+    }
+
+}
+
+Use  a recursive/tracing tree ,its void fun so wont go back
+
+       Test(3)
+       /\
+      3  Test(2)
+          / \
+          2  Test(1)
+             / \
+             1  Test(0)
+                 |
+                 x
+       Number of calls n+1 == order is O(n)
+
+Recurrence Relation
+T(n) -- void Test int(n)
+
+For recurence relations it is T(n)
+
+void Test(int n)
+{
+    if(n>0)
+    {
+        print(n)  --1
+        Test(n-1)
+    }
+
+}      T(n) = T(n-1) +1
+
+
+
+
+
+Heap
+================
+It is a complete binary tree
+A complete binary tree will never have gaps in array
+All levels must be full but left most node in last must be there
+Height of complete binary tree will be always log n,becuase only its filled we will go to next level
+
+Max heap --> every node will ahve elements greater than all its descendants
+Min heap --> smallest element is in the root
+
+Priority Queue -- elements will have priority ,inserted and deleted based on priority
+
+element with highest priority will be deleted
+
+
+
+
+
+
+
+
+

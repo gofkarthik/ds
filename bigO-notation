@@ -1,0 +1,57 @@
+
+					   Access   Search Insertion  Deletion    Space		
+Array   				O(1) 	O(n) 	O(n) 		O(n) 		O(n)
+Stack 					O(n) 	O(n) 	O(1) 		O(1) 		O(n)
+Queue   				O(n) 	O(n) 	O(1) 		O(1) 		O(n)
+Singly-Linked List 		O(n) 	O(n) 	O(1) 		O(1) 		O(n)
+Doubly-Linked List 		O(n) 	O(n) 	O(1) 		O(1) 		O(n)
+
+Array	Space is O(n) ,  only access is O(1) insert delete O(n) Search O(n)
+Stack/Queue/Linked List are same
+			Space is O(n) , insert delete O(1) Access Search O(n)
+
+Binary Search Tree - best is O(logn) worst is O(n) space O(n)
+
+All self balaned trees  BTree, red-black Tree, AVL tree  are O(logn) space O(n)
+
+skiplist has space of O(n log(n))
+
+Sort
+				Worst          Space     Best
+Quick Sort.    O(n pwo 2)     O(log n)  O(n log n)
+Merge Sort.     O(n log n).    O(n)
+TimSort         O(n log n).    O(n)
+Heap Sort.      O(n log n).    O(1)
+
+Bubble			O(n pow2).   O(1)
+Insertion		O(n pow2).  O(1)
+Selection		O(n pow2). O(1)
+
+A tree of n nodes will have n-1 edges
+Segment Tree can handle updates and queries in log(n) time on an array
+
+Heap data structure
+PriorityQueue -- binary heap
+Sorts are maininted in binary heap
+use it usally for min.max etc
+
+Time complexity for the methods offer & poll is O(log(n)) and
+for the peek() it is Constant time O(1) of java priority queue.
+
+
+Greedy method
+used for optimization
+Travel from locationA --> locationB
+This can have multiple solutions
+But there is a condition this should be covered in 12 hours
+So find a solution is a feasible..solution which satisfying the constraints
+second condition is to travel this with minimum cost..
+so out of 2 feasible solution we need to find which gives minimum cost
+ --this becomes optimization and this is called optimal solution
+--so there should be only one optimal solution
+
+So generally a problem requires minimum or maximum result are optimization problems
+Greedy method is used for optimization problems, other are dynamic programming and branch&bound
+
+
+Rotten oranges
