@@ -1,0 +1,47 @@
+
+#BFS
+==============
+Runtime / Space O(V+E)
+In BFS it is level order traversal
+Works same way for directed/undirected graph
+
+#Creation
+GraphNode
+-----------------
+Have String/Integer has vertex
+Take it in the constructor(vertex name)
+Have a boolean field (visited)
+
+Main Class
+-----------------
+Create 2 dimensional array with size
+Create List of vertex(run a for loop upto 10 and use graph constructor)
+Add neighbors ..let say you need to add 1,2 (undirected edge) then
+    a[1][2] = 1
+    a[2][1] = 1 //for directed dont do this
+
+Traversal
+-----------------
+Get list of vertices
+For each vertex
+    if vertex not visited
+    visit(vertex)
+
+Visit(vertex)
+Create Queue
+Add vertex to Queue
+Mark visited //critical if not marked then this will come again
+Get neighbors
+For each neighbor
+    If not visited
+    Add to queue
+    mark it as true
+
+//if given a verted then start from there
+
+BFS -- cannot be done in a disconnected graph
+
+
+
+
+
