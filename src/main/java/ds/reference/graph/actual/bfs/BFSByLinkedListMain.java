@@ -1,29 +1,26 @@
-package ds.graph.actual.bfs;
-
+package ds.reference.graph.actual.bfs;
 import java.util.ArrayList;
+import ds.reference.graph.actual.node.*;
 
-import ds.graph.actual.node.GraphNode;
-
-public class BFSByAdjacencyMatrixMain {
+public class BFSByLinkedListMain {
 
 	public static void main(String[] args) {
-		
-		
-		//Will store Nodes in this List
+	
+		//Initialize a Arraylist for storing all the graph nodes
 		ArrayList<GraphNode> nodeList = new ArrayList<>();
 		
 		
-		//Create 10 nodes: V1-V10
+		//create 10 nodes: v1-v10
 		for(int i=1;i<11; i++) {
-			nodeList.add(new GraphNode("V"+i,i-1));
+			nodeList.add(new GraphNode("V"+i));
 		}
 		
 		
-		//Pass Graph arraylist for further processing
-		BFSByAdjacencyMatrix graph = new BFSByAdjacencyMatrix(nodeList);
+		//Constructor
+		BFSByLinkedList graph = new BFSByLinkedList(nodeList);
 		
 		
-		//Add edges in graph
+		//add edges 
 		graph.addUndirectedEdge(1,2);
 		graph.addUndirectedEdge(1,4);
 		graph.addUndirectedEdge(2,3);
@@ -37,10 +34,9 @@ public class BFSByAdjacencyMatrixMain {
 		graph.addUndirectedEdge(8,9);
 		graph.addUndirectedEdge(9,10);
 		
+		
 		//bfs from v1
 		System.out.println("Printing BFS from source: V1");
-		//graph.printMatrix();
 		graph.bfs();
 	}
-
 }

@@ -1,4 +1,4 @@
-package ds.graph.matrix;
+package ds.reference.graph.matrix;
 
 public class MatrixBasics {
 

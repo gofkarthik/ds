@@ -235,4 +235,34 @@ minheap
 
  only at the root level of tree it should be smallest
 
+disjoint set (three elements)
+A data structure keeps track of set of elements which are partitioned into number of disjoint and non-overlapping sets
+
+makeSet --
+Time complexity O(N) space complexity O(N)
+create n number of sets for n number of elements
+
+A B C D E  (create 5 idepenendt sets)
+
+union
+then merge 2 sets ..uinom
+
+ AB  C D E
+
+ ABE C D
+
+ union(s1,s2)
+  if s1 and se are in same return
+  else
+  if s1 is biiger then merge s2 into s1 else do othersie
+Time complexity O(n) O(1)
+
+
+findSet O(1) O(1)
+returns the setname in which the element is there
+ if you ask E it will return ABE
+all sets represetnd by an element
+
+  ABE --represented A
+  then of you called E it will return A
 

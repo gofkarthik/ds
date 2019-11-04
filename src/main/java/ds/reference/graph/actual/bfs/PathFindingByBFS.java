@@ -1,7 +1,7 @@
-package ds.graph.actual.bfs;
+package ds.reference.graph.actual.bfs;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import ds.graph.actual.node.GraphNode;
+import ds.reference.graph.actual.node.GraphNode;
 
 public class PathFindingByBFS {
 	ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();

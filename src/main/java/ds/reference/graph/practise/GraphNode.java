@@ -1,4 +1,4 @@
-package ds.graph.practise;
+package ds.reference.graph.practise;
 
 import java.util.ArrayList;
 import java.util.List;

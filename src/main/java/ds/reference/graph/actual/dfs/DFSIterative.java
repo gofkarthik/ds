@@ -1,6 +1,6 @@
-package ds.graph.actual.dfs;
+package ds.reference.graph.actual.dfs;
 import java.util.*;
-import ds.graph.actual.node.GraphNode;
+import ds.reference.graph.actual.node.GraphNode;
 
 public class DFSIterative {
 	ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();

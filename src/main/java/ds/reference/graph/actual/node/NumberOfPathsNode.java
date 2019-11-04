@@ -1,4 +1,4 @@
-package ds.graph.actual.node;
+package ds.reference.graph.actual.node;
 
 import java.util.ArrayList;
 

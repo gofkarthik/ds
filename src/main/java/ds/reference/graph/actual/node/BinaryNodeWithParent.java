@@ -1,4 +1,4 @@
-package ds.graph.actual.node;
+package ds.reference.graph.actual.node;
 
 public class BinaryNodeWithParent {
 	private int value;

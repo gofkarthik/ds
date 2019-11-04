@@ -206,6 +206,10 @@ Explanation:  The orange in the bottom left corner (row 2, column 0) is never ro
         return depth;
     }
 
+    //alien dictionary
+
+
+
     //no of files same problem as above
     //file server problem
     static int minimumHours(int rows,int column,List<List<Integer>> data){

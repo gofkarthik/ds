@@ -1,6 +1,6 @@
-package ds.graph.actual.bfs;
+package ds.reference.graph.actual.bfs;
 import java.util.*;
-import ds.graph.actual.node.*;
+import ds.reference.graph.actual.node.*;
 
 public class BFSByLinkedList {
 
