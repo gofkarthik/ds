@@ -41,6 +41,132 @@ For each neighbor
 
 BFS -- cannot be done in a disconnected graph
 
+https://www.youtube.com/watch?v=1n5XPFcvxds&list=PLqM7alHXFySEaZgcg7uRYJFBnYMLti-nh
+
+Graph Data Structures
+====================
+A pairwise relationship between set of objects
+i)Vertex (nodes)
+ii) Edges (arc)
+
+Directed Graph (DiGraph)
+===============
+Have pair of ordered vertices (u,v)
+  means u,v != v,u
+
+Undirected Graph
+===============
+Have pair of unordered vertices (u,v) ..uv and vu both are same
+
+Graph applications
+=================
+Social Network
+
+Representation
+==============
+Adjacency Matrix -- matrix with 0 and 1
+Removing an edge takes O(1) time
+More space : O(v pow 2) addition of new also takes O(v pow 2)
+But queries whether there is an edge from vertex u to vertex v are not
+efficeint and can be done O(1)
+
+Adjaceny list -
+An array of linked list is used. Size of array is equal to number of
+verties and each entry of array corresponds to a linked list of vertices
+adjancent to its index
+saves space O(V+E)
+Adding vertex is easier
+But queries whether there is an edge from vertex u to vertex v are not
+efficeint and can be done O(v)
+
+
+BFS
+====
+Level order traversal
+Goes level by level
+But in graph we can traverse the same node again and again
+We will be avoiding it by using boolean
+
+time complexity O(V+E)
+V -> while !queue.isEmpty
+E -> we go throug all edges to get adjacent neighbors
+
+Applications used in BSF
+========================
+Shortest path in a graph
+Web crawler
+Social Network
+Cycle detection in undirected graph
+To test a graog is biparite
+Ford fulkerson algorithm
+
+DFS
+========
+Depth first traversal
+Goes by depth finds node if there is no more neighbors back tracks
+
+//Same as BFS use stack in place of queue
+
+Recursion:
+Do for a single node
+mark it to true
+
+        vis[src]=true;
+        System.out.print(src +" ");
+        ArrayList<Integer> neighbor=list.get(src);
+        for(Integer i:neighbor){
+            if(!vis[i]){
+                dfs(i,list,vis); // at this line in recursion gets called
+            }
+        }
+
+  In recursion basically every method goes
+  on the line of call it remmebers the line numer and what are its variables
+  uses an internal stack
+
+Detect Cycle
+=============
+Directed graph
+
+If node is visited then we will put to stack
+on each visit just check for node is already part of recursion if not return false
+
+Given a directed graph check whether the graph contains a cycle or not
+
+Backedge : an edge that is from a node to itself or one of its ancestor
+
+ 0 -> 1
+   <-
+ 0 -> 1<-
+
+ Use dfs ,check whether node is already visited in recursion stack
+ If it is visited then its a cycle
+
+  0 -> 1
+ >
+ | |
+    <
+  2
+
+
+
+Application used in DFS
+=======================
+Detect cycle in a graph
+Toplogical sorting
+Finding strongly connected components
+
+
+
+Topological Sort
+===============
+Only for directed acylic graph only
+Use same as dfs
+use an extra stack in the end
+and print that stack
+
+Detect Cycle DFS
+=================
 
 
 
