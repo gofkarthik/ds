@@ -169,5 +169,84 @@ Detect Cycle DFS
 =================
 
 
+Shortest Path
+=============
+Single source shortest path is a technique about finding a path between a given vertex(source) to all other
+vertices in a graph such the total distances between them (source & destination) is minimum
+
+Can be acheived
+ Using BFS
+ Using DFS -- not preferred
+ Dijkstra
+ Bellman Ford
+
+Using BFS shortest path
+ Use the same traversal ,but each vertex have a variable called parent
+ v2 -- v3 (in v3 we will store parent as v2)
+ for v2 parent is null
+
+Time complexity -- O(E)
+ It always gauranteed graph is connected in case of shortest path
+ so there is always O(E)
+Space complexity -- O(E)
+
+BFS can be used for unweighted graphs to find SSSP not for weighted graphs
+because there is a weight, irrespective of it BFS will go only in breath way
+so there is always a better way to do it
 
 
+DFS will never work for SSSP
+Reason because it goes to max depth as possible and then reverts back,even though there is a node near by
+
+Dijkstra
+========
+For weighted and unweighted this will work
+
+Algo
+Set distance for all verticies as infinite and source vertex as 0
+o     infi
+E --> B
+      infi
+  --->A
+Save all vertices in minheap (the top node is always extraced and root node is the smallest for all elements,but not recursively)
+        for instance
+                                10
+                             20     30
+                           15
+           You can see 10 is smallest but down the line 20 is greater than 15..its fine it is allowed
+
+currentVertex = extract from minheap (0)E
+foe each neighbor of current vertex
+    if currentvertex distane + currentedge < neigbors distance
+    update neighbors distance and parent
+
+0    4    in
+  E --> B     inf
+    --------> D
+       2
+       For B
+      currentdistane + currentedge =     4+0  < infinity then update B value to 4 and set its parent to E
+
+Time O(Vsqaure) same as O(E) and space complexity O(E)
+
+Dikjstra will not work for negative cycle
+
+Negative cycle
+ If there is  a cycle(a cycle is a pth of edge and verties where in a vertex is reachable from itself)
+ Total weight of cycle a negative number (the path distance values is negative)
+
+ We can never find minimum distane in a negative cycle,as we can keep going infinite
+ So if there is a negative cyle we can never use dijkstra algo
+ But dijkstra has no way to say there is a negative cycle or not
+
+BellmanFord dry run
+===================
+
+Used to find single source shortest path
+Used to find negative cycle but cannot find the shortest path
+
+
+ Current distance of destination vertex > more than distance of source + current edge
+
+In bellman we take the edges and process same way as it is given
+Do same way as djkstra

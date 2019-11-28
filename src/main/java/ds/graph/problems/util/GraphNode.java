@@ -11,8 +11,16 @@ public class GraphNode {
 
     public int index;
 
+    public ArrayList<GraphNode> neighbors = new ArrayList<GraphNode>();
+
+    public GraphNode parent;
+
     public GraphNode() {
 
+    }
+
+    public GraphNode(String vertex) {
+        this.vertex=vertex;
     }
 
     public GraphNode(String vertex, int index) {
