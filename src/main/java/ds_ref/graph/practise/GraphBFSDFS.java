@@ -1,4 +1,5 @@
-package ds_ref.graph;
+package ds_ref.graph.practise;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -83,6 +84,7 @@ public class GraphBFSDFS {
         GraphBFSDFS graph = new GraphBFSDFS();
         for (int i = 1; i < 11; i++) {
             graph.populateVertexes("V" + (i), i-1);
+
         }
         graph.addUndirectedEdge(1,2);
         graph.addUndirectedEdge(1,4);

@@ -4,18 +4,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphNode {
+    private String name;
+    private int index; //index is used to map this Node's name with index of Adjacency Matrix' cell#
+    private ArrayList<GraphNode> neighbors = new ArrayList<GraphNode>();
+    private boolean isVisited = false;
+    private GraphNode parent;
 
-    String vertex;
+    public GraphNode(String name, int index) {
+        this.name = name;
+        this.index = index;
+    }
 
-    boolean isVisited;
+    public String getName() {
+        return name;
+    }
 
-    int index;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    List<GraphNode> neighbors=new ArrayList<>();
+    public int getIndex() {
+        return index;
+    }
 
-    GraphNode(String vertex,int index){
-        this.vertex=vertex;
-        this.index=index;
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public ArrayList<GraphNode> getNeighbors() {
+        return neighbors;
+    }
+
+    public void setNeighbors(ArrayList<GraphNode> neighbors) {
+        this.neighbors = neighbors;
+    }
+
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    public void setVisited(boolean isVisited) {
+        this.isVisited = isVisited;
+    }
+
+    public GraphNode getParent() {
+        return parent;
+    }
+
+    public void setParent(GraphNode parent) {
+        this.parent = parent;
+    }
+
+    public GraphNode(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return  name ;
     }
 
 }
